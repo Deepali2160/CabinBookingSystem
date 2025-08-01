@@ -1,4 +1,4 @@
-package com.yash.cabinbooking.dao.impl;
+package com.yash.cabinbooking.daoimpl;
 
 import com.yash.cabinbooking.dao.CabinDao;
 import com.yash.cabinbooking.model.Cabin;
@@ -76,6 +76,23 @@ public class CabinDaoImpl implements CabinDao {
         }
         return false;
     }
+    public List<Cabin> searchCabins(String keyword) {
+        List<Cabin> cabins = new ArrayList<>();
+        String sql = "SELECT * FROM cabins WHERE name LIKE ? OR description LIKE ? OR location LIKE ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            String likeKeyword = "%" + keyword + "%";
+            ps.setString(1, likeKeyword);
+            ps.setString(2, likeKeyword);
+            ps.setString(3, likeKeyword);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                cabins.add(mapRow(rs));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cabins;
+    }
 
     @Override
     public boolean deleteCabin(int id) {
@@ -146,4 +163,34 @@ public class CabinDaoImpl implements CabinDao {
         c.setUpdatedAt(rs.getTimestamp("updated_at").toLocalDateTime());
         return c;
     }
+    @Override
+    public List<Cabin> searchCabins(String location, String startDate, String endDate, int adults, int children) {
+        List<Cabin> cabinList = new ArrayList<>();
+
+        String sql = "SELECT * FROM cabins WHERE location LIKE ? AND capacity >= ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%" + location + "%");
+            stmt.setInt(2, adults + children);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Cabin cabin = new Cabin();
+                cabin.setId(rs.getInt("id"));
+                cabin.setName(rs.getString("name"));
+                cabin.setLocation(rs.getString("location"));
+                cabin.setCapacity(rs.getInt("capacity"));
+                cabin.setPrice(rs.getDouble("price"));
+                cabin.setImageUrl(rs.getString("image_url"));
+                // ... set other fields
+                cabinList.add(cabin);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return cabinList;
+    }
+
 }

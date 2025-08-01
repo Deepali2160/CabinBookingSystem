@@ -45,13 +45,15 @@
                     <p>Member since 2022</p>
                 </div>
             </div>
-            <ul class="sidebar-menu">
-                <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="#"><i class="fas fa-calendar-check"></i> My Bookings</a></li>
-                <li><a href="#"><i class="fas fa-heart"></i> Wishlist</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> Account Settings</a></li>
-                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
+           <ul class="sidebar-menu">
+               <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+               <li><a href="#"><i class="fas fa-calendar-check"></i> My Bookings</a></li>
+               <li><a href="#"><i class="fas fa-heart"></i> Wishlist</a></li>
+               <li><a href="search.jsp"><i class="fas fa-search"></i> Search Cabin</a></li> <!-- ✅ ADD THIS LINE -->
+               <li><a href="#"><i class="fas fa-cog"></i> Account Settings</a></li>
+               <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+           </ul>
+
         </aside>
 
         <!-- Main Content -->

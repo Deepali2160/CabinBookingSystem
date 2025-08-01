@@ -6,6 +6,12 @@ public class User {
     private String email;
     private String password;
     private String role; // "customer" or "admin"
+    private String phone;
+    private String address;
+    private String profilePicture;
+
+// Add to constructor(s) if needed, or use setters.
+
 
     // Constructors
     public User() {}

@@ -180,5 +180,25 @@ public class Cabin {
                 ", isFeatured" + isFeatured+
                 '}';
     }
+    private int capacity;
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+
 }
 

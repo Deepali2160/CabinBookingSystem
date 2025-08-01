@@ -1,7 +1,7 @@
 package com.yash.cabinbooking.service.impl;
 
 import com.yash.cabinbooking.dao.CabinDao;
-import com.yash.cabinbooking.dao.impl.CabinDaoImpl;
+import com.yash.cabinbooking.daoimpl.CabinDaoImpl;
 import com.yash.cabinbooking.model.Cabin;
 import com.yash.cabinbooking.service.CabinService;
 
@@ -49,4 +49,6 @@ public class CabinServiceImpl implements CabinService {
     public boolean toggleFeatured(int id, boolean newStatus) {
         return cabinDao.toggleFeatured(id, newStatus);
     }
+
+
 }

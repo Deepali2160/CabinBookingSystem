@@ -11,4 +11,7 @@ public interface CabinDao {
     boolean deleteCabin(int id);
     boolean toggleAvailability(int id, boolean newStatus);
     boolean toggleFeatured(int id, boolean newStatus);
+    List<Cabin> searchCabins(String keyword);
+    List<Cabin> searchCabins(String location, String startDate, String endDate, int adults, int children);
+
 }
